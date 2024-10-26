@@ -75,6 +75,60 @@ addLetterClickListeners();
 
 
 
+function updateHangman() {
+    var hang = document.getElementById("hang");
+    
+    var parts = [
+        { file: "head", className: "head" },
+        { file: "body", className: "body" },
+        { file: "left-hand", className: "left-hand" },
+        { file: "right-hand", className: "right-hand" },
+        { file: "left-leg", className: "left-leg" },
+        { file: "right-leg", className: "right-leg" }
+    ];
 
+    
+    for (var i = 0; i < wrongGuesses && i < parts.length; i++) {
+        var img = document.createElement("img");
+        img.src = `./assets/${parts[i].file}.svg`;
+        img.className = `stand ${parts[i].className}`; 
+        hang.appendChild(img); 
+    }
+}
+
+
+
+
+
+function handleLetterClick(letter) {
+    
+    if (!guessedLetters.includes(letter)) {
+        guessedLetters.push(letter); 
+
+        
+        if (!selectedWord.includes(letter)) {
+            wrongGuesses++; 
+
+            
+            if (wrongGuesses >= maxWrongGuesses) {
+                
+                alert("Game Over! The word was \"" + selectedWord + "\".");
+                startGame(); 
+            }
+        }
+
+        
+        updateDisplay(); 
+    }
+}
+
+
+startGame();
+
+
+
+
+
+ 
 
 
