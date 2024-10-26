@@ -54,18 +54,27 @@ function updateDisplay() {
 }
 
 
-
-function updateHangman() {
-    var hang = document.getElementById("hang");
-    hang.innerHTML = ""; 
+function addLetterClickListeners() {
+    
+    var letterDivs = document.querySelectorAll('.letter');
 
     
-    if (wrongGuesses >= 1) hang.innerHTML += `<img src="./assets/head.svg" />`;
-    if (wrongGuesses >= 2) hang.innerHTML += `<img src="./assets/body.svg" />`;
-    if (wrongGuesses >= 3) hang.innerHTML += `<img src="./assets/left-hand.svg" />`;
-    if (wrongGuesses >= 4) hang.innerHTML += `<img src="./assets/right-hand.svg" />`;
-    if (wrongGuesses >= 5) hang.innerHTML += `<img src="./assets/left-leg.svg" />`;
-    if (wrongGuesses >= 6) hang.innerHTML += `<img src="./assets/right-leg.svg" />`;
+    for (var i = 0; i < letterDivs.length; i++) {
+        
+        letterDivs[i].addEventListener('click', function() {
+            
+            var clickedLetter = this.textContent; 
+            
+            
+            handleLetterClick(clickedLetter);
+        });
+    }
 }
+addLetterClickListeners();
+
+
+
+
+
 
 

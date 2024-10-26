@@ -1,0 +1,8 @@
+
+
+function initGame() {
+    startGame(); 
+}
+
+
+initGame();
